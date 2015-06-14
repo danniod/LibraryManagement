@@ -57,7 +57,7 @@ public class jdbcUtil {
 	 * @param conn
 	 * @param sm
 	 */
-	public void freeAll(Connection conn, Statement sm) {
+	public static void freeAll(Connection conn, Statement sm) {
 		freeAll(conn, sm, null);
 	}
 
