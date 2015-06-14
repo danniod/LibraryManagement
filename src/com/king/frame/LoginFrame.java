@@ -1,4 +1,4 @@
-package com.qlu.frame;
+package com.king.frame;
 
 import javax.swing.JFrame;
 

@@ -1,4 +1,4 @@
-package com.qlu.entry;
+package com.king.entry;
 /**
  * 文件: User.java
  * 用户类的父类

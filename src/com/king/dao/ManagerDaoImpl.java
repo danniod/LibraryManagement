@@ -1,4 +1,4 @@
-package com.qlu.dao;
+package com.king.dao;
 
 public class ManagerDaoImpl {
 

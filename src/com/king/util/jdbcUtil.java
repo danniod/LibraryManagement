@@ -1,4 +1,4 @@
-package com.qlu.util;
+package com.king.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

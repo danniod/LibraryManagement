@@ -1,4 +1,4 @@
-package com.qlu.entry;
+package com.king.entry;
 
 public class Stu extends Reader {
 	public Stu() {
