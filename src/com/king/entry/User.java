@@ -9,7 +9,16 @@ public class User {
 	protected String userName;
 	protected int id;
 	protected String name;
+	protected long tel;
 	
+
+	public long getTel() {
+		return tel;
+	}
+
+	public void setTel(long tel) {
+		this.tel = tel;
+	}
 
 	public String getUserName() {
 		return userName;
