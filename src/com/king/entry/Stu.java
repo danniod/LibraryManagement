@@ -12,7 +12,7 @@ public class Stu extends Reader {
 	}
 
 	public Stu(int id, String userName, String password, String name, byte sex,
-			String spec, Date birthday, long tel) {
+			String spec, Date birthday, long tel,int count) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -22,7 +22,10 @@ public class Stu extends Reader {
 		this.spec = spec;
 		this.birthday = birthday;
 		this.tel = tel;
+		this.count = count;
 	}
+
+
 
 	public Date getBirthday() {
 		return birthday;
@@ -36,7 +39,7 @@ public class Stu extends Reader {
 		return sex;
 	}
 
-	public void setSex(byte sex) {
+	public void setGender(byte sex) {
 		this.sex = sex;
 	}
 
@@ -47,7 +50,5 @@ public class Stu extends Reader {
 	public void setSpec(String spec) {
 		this.spec = spec;
 	}
-	
-	
-	
+
 }

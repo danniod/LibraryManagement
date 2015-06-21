@@ -2,7 +2,7 @@ package com.king.dao;
 
 import java.util.List;
 
-public interface UserDao<T> {
+public interface IDao<T> {
 	
 	//增
 	public int insert(T t);

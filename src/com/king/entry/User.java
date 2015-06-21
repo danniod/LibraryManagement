@@ -12,9 +12,18 @@ public class User {
 	protected String password;
 	protected String name;
 	protected long tel;
-
+	private int role;
+	
 	public User() {
+		
+	}
 
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 	public User(int id, String userName, String password, String name, long tel) {

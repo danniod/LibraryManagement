@@ -10,7 +10,7 @@ public class jdbcUtil {
 
 	private static String username = "mysql";
 	private static String passward = "mysql";
-	private static String url = "jdbc:mysql://192.168.8.22:3306/mysql";
+	private static String url = "jdbc:mysql://192.168.8.22:3306/LibraryManagement";
 	private static String driver = "com.mysql.jdbc.Driver";
 
 	/**
