@@ -22,17 +22,17 @@ public class StuDaoImpl implements IDao<Stu> {
 		int result = 0;
 		try {
 			ps = conn.prepareStatement(sql);
-			
+
 			ps.setInt(1, stu.getId());
 			ps.setString(2, stu.getName());
 			ps.setByte(3, stu.getSex());
 			ps.setString(4, stu.getSpec());
 			ps.setLong(5, stu.getTel());
 			ps.setDate(6, new java.sql.Date(stu.getBirthday().getTime()));
-			
+
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
-			if (e.getErrorCode()==1452) {
+			if (e.getErrorCode() == 1452) {
 				System.out.println("//////");
 				String sql1 = "insert into user values(?,?,?,3)";
 				try {
@@ -40,19 +40,18 @@ public class StuDaoImpl implements IDao<Stu> {
 					ps1.setInt(1, stu.getId());
 					ps1.setString(2, stu.getUserName());
 					ps1.setString(3, stu.getPassword());
-					
+
 					ps1.executeUpdate();
 				} catch (SQLException e1) {
 					System.err.println("user表未插入");
-				}
-				finally{
+				} finally {
 					try {
 						result = ps.executeUpdate();
 					} catch (SQLException e1) {
 						System.err.println("reader表未插入");
 					}
 				}
-			}else{
+			} else {
 				e.printStackTrace();
 			}
 		} finally {
@@ -73,14 +72,14 @@ public class StuDaoImpl implements IDao<Stu> {
 
 	@Override
 	public Stu findById(Integer id) {
-		
+
 		Connection conn = jdbcUtil.getConnection();
-		String sql = "select from user,reader  where id ="+id;
+		String sql = "select from user,reader  where id =" + id;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Stu t= new Stu();
+		Stu t = new Stu();
 		try {
-			ps= conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				t.setId(rs.getInt(1));
@@ -92,16 +91,18 @@ public class StuDaoImpl implements IDao<Stu> {
 				t.setTel(rs.getLong(9));
 				t.setBirthday(rs.getDate(10));
 				t.setCount(rs.getInt(11));
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbcUtil.freeAll(conn, ps, rs);
 		}
 		return t;
 	}
 
 	@Override
-	public List<Stu> findAll() {
+	public List<Stu> findAll(String search) {
 		return null;
 	}
 

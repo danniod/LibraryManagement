@@ -15,7 +15,14 @@ import javax.swing.JTextField;
 //import com.dovewi.bookmgrcode.vo.Reader;
 
 public class ReaderManagerPanel extends JPanel {
-	ReaderManagerPanel() {
+	private int role = 0;
+
+	public ReaderManagerPanel() {
+		this.initComponent();
+	}
+
+	public ReaderManagerPanel(int role) {
+		this.role = role;
 		this.initComponent();
 	}
 
@@ -23,9 +30,11 @@ public class ReaderManagerPanel extends JPanel {
 
 		this.setLayout(null);
 		JTabbedPane tb = new JTabbedPane();
-		tb.addTab("添加读者", new AddReaderPane());
 		tb.addTab("修改信息", new UpdateReaderPane());
-		tb.addTab("删除读者", new DeleteReaderPane());
+		if (role < 2 ) {
+			tb.addTab("添加读者", new AddReaderPane());
+			tb.addTab("删除读者", new DeleteReaderPane());
+		}
 		// tb.addTab("借书查询", new QueryReaderPane());
 		tb.setVisible(true);
 		tb.setBounds(20, 20, 750, 500);

@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.king.dao.UserDaoImpl;
+import com.king.entry.User;
+
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
 
@@ -50,13 +53,16 @@ public class LoginFrame extends JFrame {
 	}
 
 	private void login() {
-		if (userName.equals(tfUsername.getText())
-				&& passwrod.equals(String.valueOf(pfPassword.getPassword()))) {
-			JOptionPane.showMessageDialog(null, "Login Success", "Tip",
-					JOptionPane.INFORMATION_MESSAGE);
-			new MainFrame();
+		UserDaoImpl daoImpl = new UserDaoImpl();
+		User user = daoImpl.findByUserName(tfUsername.getText());
+		if (!(user.getId() == 0)
+				&& user.getPassword().equals(
+						String.valueOf(pfPassword.getPassword()))) {
+			System.out.println("..."+user.getRole());
+			this.setVisible(false);
+			new MainFrame(user.getRole());
 		} else {
-			JOptionPane.showMessageDialog(null, "Login Error", "Tip",
+			JOptionPane.showMessageDialog(null, "用户名密码不匹配", "error",
 					JOptionPane.ERROR_MESSAGE);
 			tfUsername.setText("");
 			pfPassword.setText("");
@@ -66,14 +72,11 @@ public class LoginFrame extends JFrame {
 	public static void main(String[] args) {
 		new LoginFrame();
 	}
-
+ 
 	private JLabel labUsername = new JLabel("用户名");
 	private JLabel labPassword = new JLabel("密码");
 	private JTextField tfUsername = new JTextField();
 	private JPasswordField pfPassword = new JPasswordField();
 	private JButton btnLogin = new JButton("登录");
-//TODO
-	final String userName = "123";
-	final String passwrod = "123";
 
 }

@@ -16,5 +16,6 @@ public interface IDao<T> {
 	//查
 	public T findById(Integer id);
 	
-	public List<T> findAll();
+	public List<T> findAll(String search);
+
 }
