@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import com.king.entry.Stu;
@@ -14,7 +12,7 @@ import com.king.util.jdbcUtil;
 public class StuDaoImpl implements IDao<Stu> {
 
 	@Override
-	public int insert(Stu stu) {
+	public int insert(Stu t) {
 
 		Connection conn = jdbcUtil.getConnection();
 		String sql = "insert into reader values(?,?,?,?,?,?,0)";
@@ -23,12 +21,12 @@ public class StuDaoImpl implements IDao<Stu> {
 		try {
 			ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, stu.getId());
-			ps.setString(2, stu.getName());
-			ps.setByte(3, stu.getSex());
-			ps.setString(4, stu.getSpec());
-			ps.setLong(5, stu.getTel());
-			ps.setDate(6, new java.sql.Date(stu.getBirthday().getTime()));
+			ps.setInt(1, t.getId());
+			ps.setString(2, t.getName());
+			ps.setByte(3, t.getSex());
+			ps.setString(4, t.getSpec());
+			ps.setLong(5, t.getTel());
+			ps.setDate(6, new java.sql.Date(t.getBirthday().getTime()));
 
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
@@ -37,9 +35,9 @@ public class StuDaoImpl implements IDao<Stu> {
 				String sql1 = "insert into user values(?,?,?,3)";
 				try {
 					PreparedStatement ps1 = conn.prepareStatement(sql1);
-					ps1.setInt(1, stu.getId());
-					ps1.setString(2, stu.getUserName());
-					ps1.setString(3, stu.getPassword());
+					ps1.setInt(1, t.getId());
+					ps1.setString(2, t.getUserName());
+					ps1.setString(3, t.getPassword());
 
 					ps1.executeUpdate();
 				} catch (SQLException e1) {

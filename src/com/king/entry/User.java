@@ -10,8 +10,6 @@ public class User {
 	protected int id;
 	protected String userName;
 	protected String password;
-	protected String name;
-	protected long tel;
 	private int role;
 	
 	public User() {
@@ -25,7 +23,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", password="
-				+ password + ", name=" + name + ", tel=" + tel + ", role="
+				+ password + ", role="
 				+ role + "]";
 	}
 
@@ -33,13 +31,11 @@ public class User {
 		this.role = role;
 	}
 
-	public User(int id, String userName, String password, String name, long tel) {
+	public User(int id, String userName, String password) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
-		this.name = name;
-		this.tel = tel;
 	}
 
 	public int getId() {
@@ -64,22 +60,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getTel() {
-		return tel;
-	}
-
-	public void setTel(long tel) {
-		this.tel = tel;
 	}
 
 }

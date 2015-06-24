@@ -7,6 +7,8 @@ public class Stu extends Reader {
 	private Date birthday;
 	private byte sex;
 	private String spec;
+	private String name;
+	private long tel;
 
 	public Stu() {
 	}
@@ -46,9 +48,29 @@ public class Stu extends Reader {
 	public String getSpec() {
 		return spec;
 	}
-
+	
 	public void setSpec(String spec) {
 		this.spec = spec;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public long getTel() {
+		return tel;
+	}
+
+	public void setTel(long tel) {
+		this.tel = tel;
+	}
+
+	public void setSex(byte sex) {
+		this.sex = sex;
 	}
 
 }
