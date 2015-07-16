@@ -73,4 +73,9 @@ public class Teacher extends Reader {
 		this.sex = sex;
 	}
 
+	public String showMsg() {
+		return "Teacher [name=" + name + ", sex=" + sex + ", spec=" + spec
+				+ ", tel=" + tel + ", birthday=" + birthday + "]";
+	}
+
 }

@@ -10,4 +10,5 @@ public class Reader extends User {
 	public void setCount(int count) {
 		this.count = count;
 	}
+
 }

@@ -7,7 +7,14 @@ package com.king.frame;
  * 
  * @2013.11.16
  */
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.*;
+
+import com.king.dao.BookDaoImpl;
+import com.king.entry.Book;
 
 //import com.dovewi.bookmgrcode.servicelogic.ActionManager;
 
@@ -61,13 +68,29 @@ public class AddInLibPanel extends JPanel {
 		// 添加两个按钮,侦听器设置到业务逻辑处理
 		this.add(bt_commit);
 		bt_commit.setBounds(530, 470, 100, 25);
-		// bt_commit.addActionListener(new ActionManager());
+		bt_commit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Book book = new Book(tf_bookISBN.getText(), tf_bookName
+						.getText(), tf_bookAuthor.getText(), "", new Date(),
+						Integer.parseInt(tf_bookSum.getText()), Float
+								.parseFloat(tf_bookPrice.getText()), 0, 0, 0,
+						new Date(), ta_bookInfo.getText(), null);
+				BookDaoImpl impl = new BookDaoImpl();
+				impl.insert(book);
+			}
+		});
 		this.add(bt_clear);
 		bt_clear.setBounds(640, 470, 100, 25);
-		// bt_clear.addActionListener(new ActionManager());
+		bt_clear.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				initComponent();
+			}
+		});
 	}
 
-	// 需要ActionManager能够访问这些字段取得值
 	public static JTextField tf_bookName = new JTextField(40);
 	public static JTextField tf_bookISBN = new JTextField(15);
 	public static JTextField tf_bookAuthor = new JTextField(30);

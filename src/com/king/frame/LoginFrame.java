@@ -60,7 +60,7 @@ public class LoginFrame extends JFrame {
 						String.valueOf(pfPassword.getPassword()))) {
 			System.out.println("..."+user.getRole());
 			this.setVisible(false);
-			new MainFrame(user.getRole());
+			new MainFrame(user.getRole(),user.getId());
 		} else {
 			JOptionPane.showMessageDialog(null, "用户名密码不匹配", "error",
 					JOptionPane.ERROR_MESSAGE);

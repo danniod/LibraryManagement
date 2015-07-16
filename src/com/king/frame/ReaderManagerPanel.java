@@ -11,27 +11,17 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-//import com.dovewi.bookmgrcode.sqlcode.ReaderTableDatabaseCode;
-//import com.dovewi.bookmgrcode.vo.Reader;
-
 public class ReaderManagerPanel extends JPanel {
-	private int role = 0;
 
 	public ReaderManagerPanel() {
 		this.initComponent();
 	}
 
-	public ReaderManagerPanel(int role) {
-		this.role = role;
-		this.initComponent();
-	}
-
 	private void initComponent() {
-
 		this.setLayout(null);
 		JTabbedPane tb = new JTabbedPane();
 		tb.addTab("修改信息", new UpdateReaderPane());
-		if (role < 2 ) {
+		if (MainFrame.isMgr) {
 			tb.addTab("添加读者", new AddReaderPane());
 			tb.addTab("删除读者", new DeleteReaderPane());
 		}
@@ -176,7 +166,7 @@ class DeleteReaderPane extends JPanel implements ActionListener {
 	}
 }
 
-class UpdateReaderPane extends JPanel implements ActionListener {
+class UpdateReaderPane extends JPanel {
 
 	UpdateReaderPane() {
 		this.initgetComponent();
@@ -199,7 +189,6 @@ class UpdateReaderPane extends JPanel implements ActionListener {
 		JLabel label_other = new JLabel("其他");
 		// 按钮
 		bt_commit = new JButton("提交");
-		bt_get = new JButton("获取");
 		// 开始构造窗体
 		setLayout(null);
 		this.add(label_stuNum);
@@ -225,17 +214,14 @@ class UpdateReaderPane extends JPanel implements ActionListener {
 		scp.setBounds(230, 320, 271, 70);
 		// 添加两个按钮,侦听器设置到业务逻辑处理
 		this.add(bt_commit);
-		bt_commit.setBounds(250, 410, 100, 25);
-		bt_commit.addActionListener(this);
-		this.add(bt_get);
-		bt_get.setBounds(370, 410, 100, 25);
-		bt_get.addActionListener(this);
-	}
+		bt_commit.setBounds(400, 410, 100, 25);
+		bt_commit.addActionListener(new ActionListener() {
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
+			}
+		});
 	}
 
 	private JTextField tf_stuNum;
@@ -244,7 +230,6 @@ class UpdateReaderPane extends JPanel implements ActionListener {
 	private JTextField tf_phone;
 	private JTextArea ta_other;
 	private JButton bt_commit;
-	private JButton bt_get;
 	private String a = "";
 	private String b = "";
 	private String c = "";
@@ -299,9 +284,3 @@ class UpdateReaderPane extends JPanel implements ActionListener {
 	// }
 
 }
-
-/*
- * class QueryReaderPane extends JPanel { QueryReaderPane() {
- * 
- * } }
- */

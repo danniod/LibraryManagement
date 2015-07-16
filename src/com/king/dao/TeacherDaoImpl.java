@@ -31,7 +31,6 @@ public class TeacherDaoImpl implements IDao<Teacher>{
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
 			if (e.getErrorCode() == 1452) {
-				System.out.println("//////");
 				String sql1 = "insert into user values(?,?,?,3)";
 				try {
 					PreparedStatement ps1 = conn.prepareStatement(sql1);

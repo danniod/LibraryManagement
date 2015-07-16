@@ -73,4 +73,9 @@ public class Stu extends Reader {
 		this.sex = sex;
 	}
 
+	public String showMsg() {
+		return "birthday: " + birthday + "\n性别： " + sex + ", spec=" + spec
+				+ "\n姓名：" + name + ", tel=" + tel;
+	}
+
 }
